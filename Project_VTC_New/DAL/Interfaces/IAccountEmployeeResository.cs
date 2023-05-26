@@ -5,11 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BLL.Interfaces
+namespace DAL.Interfaces
 {
-    public interface IEmployeeService 
+    public interface IAccountEmployeeResository : IGenericRepository<AccountEmployee>
     {
-        Task<bool> Attach(Employee employee);
-        Task<bool> Update(Employee employee);
     }
 }

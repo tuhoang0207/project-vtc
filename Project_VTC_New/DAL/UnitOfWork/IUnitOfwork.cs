@@ -9,6 +9,9 @@ namespace DAL.UnitOfWork
 {
     public interface IUnitOfWork :IDisposable
     {
+        IEmployeeRepository EmployeeRepository { get; }
+        IAccountEmployeeResository AccountEmployeeResository { get; }
+        ISalaryRepository SalaryRepository { get; }
         ICustomerRepository Customers { get; }
         ICategoryRepository Categories { get; }
         IProductRepository Products { get; }

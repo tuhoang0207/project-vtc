@@ -10,6 +10,9 @@ namespace DAL.UnitOfWork
 {
     public class UnitOfWork : IUnitOfWork
     {
+        public IEmployeeRepository EmployeeRepository { get; private set; }
+        public IAccountEmployeeResository AccountEmployeeResository { get; private set; }
+        public ISalaryRepository SalaryRepository { get; private set; }
         public ICustomerRepository Customers { get;private set; }
         public ICategoryRepository Categories { get;private set; }
         public IProductRepository Products { get;private set; }
@@ -23,12 +26,16 @@ namespace DAL.UnitOfWork
         public UnitOfWork()
         {
             this.context = new CoffeeShopDbContext();
+            this.EmployeeRepository = new EmployeeRepository(context);
+            this.AccountEmployeeResository = new AccountEmployeeRepository(context);
+            this.SalaryRepository = new SalaryRepository(context);
             this.Customers = new CustomerRepository(context);
             this.Categories = new CategoryRepository(context);
             this.Products = new ProductRepository(context);
             this.Orders = new OrderRepository(context);
             this.OrderDetails = new OrderDetailRepository(context);
             this.Tables = new TableRepository(context);
+            
         }
 
 

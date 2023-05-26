@@ -32,9 +32,6 @@ namespace UI
                 Console.WriteLine("|--------------------|");
                 Console.WriteLine("|2. History Bill     |");
                 Console.WriteLine("|--------------------|");
-                Console.WriteLine("|3. View Order Detail|");
-                Console.WriteLine("+--------------------+");
-
                 choose = Convert.ToInt32(Console.ReadLine());
                 switch (choose)
                 {
@@ -45,7 +42,7 @@ namespace UI
                         }
                     case 1:
                         {
-                            //AttchOrder();
+                            AttchOrder(1);
                             break;
                         }
                     case 2:
