@@ -11,15 +11,25 @@ namespace UI
         {
             UnitOfWork unitOfWork = new UnitOfWork();
             ProductService productService = new ProductService(unitOfWork);
+            OrderService orderService = new OrderService(unitOfWork);
             CategoryService categoryService = new CategoryService(unitOfWork);
+            TableService tableService = new TableService(unitOfWork);
+            CustomerService customerService = new CustomerService(unitOfWork);
+            OrderDetailService orderDetailService = new OrderDetailService(unitOfWork);
 
+            new OrderUI(;
             int choose = 0;
             do
             {
-                Console.WriteLine("1. Product Manager");
-                Console.WriteLine("2. Order Manager");
-                Console.WriteLine("3. Employee Manager");
-                Console.WriteLine("4. Customer Manaher");
+                Console.WriteLine("+-------------------+");
+                Console.WriteLine("|1. Product Manager |");
+                Console.WriteLine("|-------------------|");
+                Console.WriteLine("|2. Order Manager   |");
+                Console.WriteLine("|-------------------|");
+                Console.WriteLine("|3. Employee Manager|");
+                Console.WriteLine("|-------------------|");
+                Console.WriteLine("|4. Customer Manager|");
+                Console.WriteLine("+-------------------+");
                 Console.Write("Enter Choose Option: ");
                 choose = Convert.ToInt32(Console.ReadLine());
                 switch (choose)
@@ -33,6 +43,17 @@ namespace UI
                             new ProductUI(unitOfWork, categoryService,productService).Menu();
                             break;
                         }
+                        break;
+                    case 2:
+                        {
+                           
+                        }
+                        break;
+                    case 3:
+                        {
+                            new CustomerUI(customerService).Menu;
+                        }
+                        break;
                 }
             } while (choose != 0);
         }

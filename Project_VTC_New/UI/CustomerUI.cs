@@ -13,7 +13,7 @@ namespace UI
     public class CustomerUI
     {
         private ICustomerService customerService;
-        public CustomerUI(IUnitOfWork unitOfWork, ICustomerService customerService)
+        public CustomerUI( ICustomerService customerService)
         {
             this.customerService = customerService;
         }
@@ -39,7 +39,7 @@ namespace UI
                         }
                     case 1:
                         {
-                            //AttchOrder();
+                            AttachCustomer();
                             break;
                         }
                     case 2:

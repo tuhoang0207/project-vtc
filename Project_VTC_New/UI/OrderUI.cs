@@ -8,13 +8,13 @@ using DAL.UnitOfWork;
 
 namespace UI
 {
-    public class OrderView
+    public class OrderUI
     {
         private OrderService _orderService;
         private IOrderDetailService orderDetailService;
         private IProductService productService;
         private ITableService tableService;
-        public OrderView(IUnitOfWork unitOfWork, ITableService tableService, IProductService productService, IOrderDetailService orderDetailService)
+        public OrderUI(IUnitOfWork unitOfWork, ITableService tableService, IProductService productService, IOrderDetailService orderDetailService)
         {
             this._orderService = new OrderService(unitOfWork);
             this.orderDetailService = orderDetailService;
@@ -119,10 +119,14 @@ namespace UI
         public async void ViewOrderDetail(int order_no)
         {
             var result = await this._orderService.Find(order_no);
+
+            Console.WriteLine("+----------------------------------------------+");
+            Console.WriteLine("|ID          |Name Product     |Amount         |");
+            Console.WriteLine("|----------------------------------------------|");
             if (result != null)
             {
-                Console.WriteLine("ID: " + result.Order_no);
-                Console.WriteLine("Name Product                   |Amount|");
+                //Console.WriteLine("ID: " + result.Order_no);
+                //Console.WriteLine("Name Product                   |Amount|");
                 result.Details.ToList().ForEach(detail =>
                 {
                     Console.WriteLine($"{detail.Product.Prod_name,-30}|{detail.Amount}");

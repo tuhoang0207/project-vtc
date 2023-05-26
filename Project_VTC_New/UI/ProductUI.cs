@@ -32,6 +32,7 @@ namespace UI
                 Console.WriteLine("|-----------|");
                 Console.WriteLine("|2. Category|");
                 Console.WriteLine("+-----------+");
+                choose = Convert.ToInt32(Console.ReadLine());
                 switch (choose)
                 {
                     case 0:
@@ -66,8 +67,9 @@ namespace UI
                 Console.WriteLine("|3. Delete Product|");
                 Console.WriteLine("|-----------------|");
                 Console.WriteLine("|4. GetListProduct|");
-                Console.WriteLine("|-----------------|");
+                Console.WriteLine("+-----------------+");
 
+                choose = Convert.ToInt32(Console.ReadLine());
                 switch (choose)
                 {
                     case 0:
