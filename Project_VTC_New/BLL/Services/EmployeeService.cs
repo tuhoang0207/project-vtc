@@ -17,29 +17,29 @@ namespace BLL.Services
             this.unitOfWork = unitOfwork;
         }
 
-        public Task<bool> Attach(Employee model)
+        public async Task<bool> Attach(Employee employee)
         {
-            throw new NotImplementedException();
+           if(employee != null)
+            {
+                await unitOfWork.EmployeeRepository.AttchTEntity(employee);
+                var result = unitOfWork.SaveChanges();
+                if(result > 0)
+                    return true;
+                return false;
+            }
+           return false;
         }
 
-        public Task<bool> Delete(Employee model)
+        public async Task<bool> Update(Employee employee)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<Employee> Find(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<IEnumerable<Employee>> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> Update(Employee model)
-        {
-            throw new NotImplementedException();
+            if(employee != null)
+            {
+                unitOfWork.EmployeeRepository.Update(employee);
+                var result = unitOfWork.SaveChanges();
+                if(result > 0) return true; 
+                return false;
+            }
+            return false;
         }
     }
 }

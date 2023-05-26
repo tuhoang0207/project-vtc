@@ -7,9 +7,7 @@ using System.Threading.Tasks;
 
 namespace BLL.Interfaces
 {
-    public interface IEmployeeService 
+    public interface IAccountEmployeeService : IService<AccountEmployee>
     {
-        Task<bool> Attach(Employee employee);
-        Task<bool> Update(Employee employee);
     }
 }
