@@ -10,14 +10,25 @@ namespace UI
         static void Main(string[] agrs)
         {
             UnitOfWork unitOfWork = new UnitOfWork();
+
+            //Service
+            #region Create Service
             ProductService productService = new ProductService(unitOfWork);
             OrderService orderService = new OrderService(unitOfWork);
             CategoryService categoryService = new CategoryService(unitOfWork);
             TableService tableService = new TableService(unitOfWork);
             CustomerService customerService = new CustomerService(unitOfWork);
             OrderDetailService orderDetailService = new OrderDetailService(unitOfWork);
+            AccountEmployeeService accountEmployeeService = new AccountEmployeeService(unitOfWork);
+            EmployeeService employeeService = new EmployeeService(unitOfWork);
+            #endregion
 
-            new OrderUI(;
+
+
+            //UI
+            OrderUI orderUI =  new OrderUI(unitOfWork, tableService, productService, orderDetailService);
+            CustomerUI customerUI = new CustomerUI(customerService);
+            EmployeeUI employeeUI = new EmployeeUI(accountEmployeeService, employeeService);
             int choose = 0;
             do
             {
@@ -43,17 +54,19 @@ namespace UI
                             new ProductUI(unitOfWork, categoryService,productService).Menu();
                             break;
                         }
-                        break;
+                        
                     case 2:
                         {
-                           
+                            orderUI.Menu();
+                            break;
                         }
-                        break;
+                        
                     case 3:
                         {
-                            new CustomerUI(customerService).Menu;
+                           employeeUI.AttachEmployee();
+                            break;
                         }
-                        break;
+                        
                 }
             } while (choose != 0);
         }

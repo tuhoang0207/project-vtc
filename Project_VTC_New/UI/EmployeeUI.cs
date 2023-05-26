@@ -23,7 +23,7 @@ namespace UI
             AccountEmployee account_Emp = new AccountEmployee();
             Console.Write("User name: ");
             account_Emp.UserName = Console.ReadLine();
-            Console.Write("PassWork: ");
+            Console.Write("PassWord: ");
             account_Emp.PassWord = Console.ReadLine();
             account_Emp.Emp_st = 0;
             Employee employee = new Employee();
@@ -42,13 +42,31 @@ namespace UI
             }
             Console.WriteLine("Error");
         }
-        public void GetListAccountEmployee()
+        public async void GetListAccountEmployee()
         {
-            var listtAccount_Emp = this.accountEmployeeService.GetAll();
+            var listAccount_Emp = await this.accountEmployeeService.GetAll();
+            Console.WriteLine("+----------------------------------------------+");
+            Console.WriteLine("|ID       |Username     |Password   |Status    |");
+            Console.WriteLine("|----------------------------------------------|");
+            foreach (var item in listAccount_Emp)
+            {
+                string empStr;
+                empStr = item.Emp_st == 1 ? "locked" : "active";
+                 
+                Console.WriteLine($"{item.Emp_no,-5}|{item.UserName,-30}|{item.PassWord,10}|{item.Emp_st}");
+                Console.WriteLine("+-----+------------------------------+------+");
+            }
         }
-        public void ShowInformationEmployee(int emp_no)
+        public async void ShowInformationEmployee(int emp_no)
         {
+            var empInformation = await this.employeeService.Find(emp_no);
 
+            Console.WriteLine("+-----------------------------------------------------------+");
+            Console.WriteLine("|ID       |Last Name          |First Name                    |Phone Number|");
+            Console.WriteLine("|-----------------------------------------------------------|");
+            Console.WriteLine($"{empInformation.Emp_no,-5}|{empInformation.Last_name,-20}|" +
+                $"{empInformation.First_name,-30}|{empInformation.PhoneNumber}");
+            Console.WriteLine("+-----+------------------------------+----------+");
         }
 
     }
