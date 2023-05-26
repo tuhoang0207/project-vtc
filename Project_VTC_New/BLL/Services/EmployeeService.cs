@@ -30,6 +30,11 @@ namespace BLL.Services
            return false;
         }
 
+        public async Task<Employee> Find(int emp_no)
+        {
+            return await this.unitOfWork.EmployeeRepository.GetAsync(emp_no);
+        }
+
         public async Task<bool> Update(Employee employee)
         {
             if(employee != null)

@@ -11,5 +11,6 @@ namespace BLL.Interfaces
     {
         Task<bool> Attach(Employee employee);
         Task<bool> Update(Employee employee);
+        Task<Employee> Find(int emp_no);
     }
 }
