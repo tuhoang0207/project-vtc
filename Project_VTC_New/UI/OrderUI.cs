@@ -56,14 +56,14 @@ namespace UI
         }
 
         // add a new order
-        public async void AttchOrder(int emp_no)
+        public   void AttchOrder(int emp_no)
         {
 
             Console.Write("Enter product name: ");
             string pro_name = Console.ReadLine();
             if (string.IsNullOrEmpty(pro_name))
             {
-                var listProByName = await this.productService.GetListProductByName(pro_name);
+                var listProByName =   this.productService.GetListProductByName(pro_name);
                 Console.WriteLine("+--------------------------------------------+");
                 Console.WriteLine("|ID     |Name                     |Price     ");
                 Console.WriteLine("|--------------------------------------------|");
@@ -76,7 +76,7 @@ namespace UI
                 Console.WriteLine("==================================================================");
                 Console.Write("Enter product_no: ");
                 int pro_no = Convert.ToInt32(Console.ReadLine());
-                var product = await this.productService.Find(pro_no);
+                var product =   this.productService.Find(pro_no);
                 if (product != null)
                 {
                     Order order = new Order();
@@ -87,18 +87,18 @@ namespace UI
                     detail.Product = product;
                     detail.Amount = Convert.ToInt32(Console.ReadLine());
                     detail.Order = order;
-                    await this._orderService.AttachOrder(order);
+                      this._orderService.AttachOrder(order);
                     this.orderDetailService.Attach(detail);
                 }
             }
 
         }
-        public async void HistoryBill()
+        public   void HistoryBill()
         {
             DateTime since = DateTime.Now;
             DateTime toDate = DateTime.Now;
 
-            var list = await this._orderService.GetHistoryBill(since, toDate);
+            var list =   this._orderService.GetHistoryBill(since, toDate);
             Console.WriteLine("+------------------------------------------------------+");
             Console.WriteLine("|ID          |CheckIn     |CheckOut    |ToTalPrice     |");
             Console.WriteLine("|------------------------------------------------------|");
@@ -113,9 +113,9 @@ namespace UI
 
         }
 
-        public async void ViewOrderDetail(int order_no)
+        public   void ViewOrderDetail(int order_no)
         {
-            var result = await this._orderService.Find(order_no);
+            var result =   this._orderService.Find(order_no);
 
             Console.WriteLine("+----------------------------------------------+");
             Console.WriteLine("|ID          |Name Product     |Amount         |");

@@ -18,7 +18,7 @@ namespace UI
             this.accountEmployeeService = accountEmployeeService;
             this.employeeService = employeeService;
         }
-        public async void AttachEmployee()
+        public   void AttachEmployee()
         {
             AccountEmployee account_Emp = new AccountEmployee();
             Console.Write("User name: ");
@@ -34,17 +34,17 @@ namespace UI
             employee.First_name = Console.ReadLine();
             Console.Write("Enter phone number: ");
             employee.PhoneNumber = Console.ReadLine();
-            if (await this.accountEmployeeService.Attach(account_Emp))
+            if (this.accountEmployeeService.Attach(account_Emp))
             {
-                await this.employeeService.Attach(employee);
+                  this.employeeService.Attach(employee);
                 Console.WriteLine("Successfully");
                 return;
             }
             Console.WriteLine("Error");
         }
-        public async void GetListAccountEmployee()
+        public   void GetListAccountEmployee()
         {
-            var listAccount_Emp = await this.accountEmployeeService.GetAll();
+            var listAccount_Emp =   this.accountEmployeeService.GetAll();
             Console.WriteLine("+----------------------------------------------+");
             Console.WriteLine("|ID       |Username     |Password   |Status    |");
             Console.WriteLine("|----------------------------------------------|");
@@ -57,9 +57,9 @@ namespace UI
                 Console.WriteLine("+-----+------------------------------+------+");
             }
         }
-        public async void ShowInformationEmployee(int emp_no)
+        public   void ShowInformationEmployee(int emp_no)
         {
-            var empInformation = await this.employeeService.Find(emp_no);
+            var empInformation =   this.employeeService.Find(emp_no);
 
             Console.WriteLine("+-----------------------------------------------------------+");
             Console.WriteLine("|ID       |Last Name          |First Name                    |Phone Number|");

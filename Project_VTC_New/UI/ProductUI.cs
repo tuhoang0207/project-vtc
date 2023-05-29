@@ -102,7 +102,7 @@ namespace UI
         
         
         #region UI_Product
-        public async void AttachProduct()
+        public   void AttachProduct()
         {
              GetListCategory();
             Product product = new Product();
@@ -114,7 +114,7 @@ namespace UI
             product.Prod_price = Convert.ToDecimal(Console.ReadLine());
             Console.Write("Enter status product: ");
             product.Prod_st = Convert.ToInt32(Console.ReadLine());
-            var result = await productService.Attach(product);
+            var result =   productService.Attach(product);
             if(result == true)
             {
                 Console.WriteLine("Successfully");
@@ -123,12 +123,12 @@ namespace UI
             Console.WriteLine("Error");
 
         }
-        public async void UpdateProduct()
+        public   void UpdateProduct()
         {
 
             Console.Write("Enter ID product: ");
             int prod_no = Convert.ToInt32(Console.ReadLine());
-            var resultProduct = await productService.Find(prod_no);
+            var resultProduct =   productService.Find(prod_no);
             if (resultProduct != null)
             {
                 Console.Write("Enter name product: ");
@@ -137,7 +137,7 @@ namespace UI
                 resultProduct.Prod_price = Convert.ToDecimal(Console.ReadLine());
                 Console.Write("Enter status: ");
                 resultProduct.Prod_st = Convert.ToInt32(Console.ReadLine());
-                var result = await productService.Update(resultProduct);
+                var result =   productService.Update(resultProduct);
                 if (result == true)
                 {
                     Console.WriteLine("Successfully");
@@ -146,14 +146,14 @@ namespace UI
                 Console.WriteLine("Error");
             }
         }
-        public async void GetListProduct()
+        public   void GetListProduct()
         {
-            var listProduct = await productService.GetAll();
+            var listProduct =   productService.GetAll();
             ViewProduct(listProduct.ToList());
         }
-        public async void GetListProductByCategory()
+        public   void GetListProductByCategory()
         {
-            var result = await categoryService.GetProductByCategory(1);
+            var result =   categoryService.GetProductByCategory(1);
             var listProduct = result.Products.ToList();
             Console.WriteLine("+-----------------------------------------------+");
             Console.WriteLine("name category: " + result.Cate_name);
@@ -223,14 +223,14 @@ namespace UI
         }
 
 
-        public async void AttachCateogry()
+        public   void AttachCateogry()
         {
             Category category = new Category();
             Console.Write("Enter category name: ");
             category.Cate_name = Console.ReadLine();
             Console.Write("Enter Discription: ");
             category.Cate_Description = Console.ReadLine();
-            var result = await categoryService.Attach(category);
+            var result =   categoryService.Attach(category);
             if (result == true)
             {
                 Console.WriteLine("Successfully");
@@ -238,18 +238,18 @@ namespace UI
             }
             Console.WriteLine("Error");
         }
-        public async void UpdateCAtegory()
+        public  void UpdateCAtegory()
         {
             Console.Write("Enter ID product: ");
             int prod_no = Convert.ToInt32(Console.ReadLine());
-            var resultCate = await categoryService.Find(prod_no);
+            var resultCate =   categoryService.Find(prod_no);
             if (resultCate != null)
             {
                 Console.Write("Enter name category: ");
                 resultCate.Cate_name = Console.ReadLine();
                 Console.Write("Enter Description: ");
                 resultCate.Cate_Description = Console.ReadLine();
-                var result = await categoryService.Update(resultCate);
+                var result =   categoryService.Update(resultCate);
                 if (result == true)
                 {
                     Console.WriteLine("Successfully");
@@ -258,16 +258,15 @@ namespace UI
                 Console.WriteLine("Error");
             }
         }
-        public async void GetListCategory()
+        public   void GetListCategory()
         {
-                var listCategories = await categoryService.GetAll();
+                var listCategories =   categoryService.GetAll();
 
-                await ViewCategory(listCategories);
+                  ViewCategory(listCategories);
         }
-        public  Task ViewCategory(IEnumerable<Category> listCategories)
+        public void ViewCategory(IEnumerable<Category> listCategories)
         {
-            Task task = Task.Run(() =>
-            {
+            
                 Console.WriteLine("+-------------------------------------------------------------------+");
                 Console.WriteLine("|ID   |name category                 |Description                   |");
                 Console.WriteLine("|-----|------------------------------|------------------------------|");
@@ -277,9 +276,7 @@ namespace UI
                     Console.WriteLine("|-----+------------------------------+------------------------------|");
                 }
                 Console.WriteLine("+-------------------------------------------------------------------+");
-            });
-            return task;
-            
+           
         }
         #endregion
     }

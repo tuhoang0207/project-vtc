@@ -51,7 +51,7 @@ namespace UI
 
             } while (choose != 0);
         }
-        public async void AttachCustomer()
+        public   void AttachCustomer()
         {
             Customer customer = new Customer();
             Console.Write("Enter last name customer: ");
@@ -61,7 +61,7 @@ namespace UI
             Console.Write("Enter phone number customer: ");
             customer.PhoneNumber = Console.ReadLine();
             customer.Cus_st = 0;
-            var result = await this.customerService.Attach(customer);
+            var result =  this.customerService.Attach(customer);
             if(result == true )
             {
                 Console.WriteLine("Successfully");
@@ -69,11 +69,11 @@ namespace UI
             }
             Console.WriteLine("Error");
         }
-        public async void UpdateCustomer()
+        public   void UpdateCustomer()
         {
             Console.Write("Enter ID customer: ");
             int cus_no = Convert.ToInt32(Console.ReadLine());
-            var result = await customerService.Find(cus_no);
+            var result =   customerService.Find(cus_no);
             if(result != null )
             {
                 Console.Write("Enter last name: ");
