@@ -24,10 +24,7 @@ namespace DAL.Repositories
            
         }
 
-        //public void AttchTEntity(TEntity entity)
-        //{
-        //    throw new NotImplementedException();
-        //}
+       
 
         public virtual void Delete(TEntity entity)
         {

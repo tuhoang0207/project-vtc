@@ -10,9 +10,9 @@ namespace DAL.Interfaces
     public interface IGenericRepository<TEntity>
         where TEntity : class
     {
-        //IEnumerable<TEntity>> GetAllAsync();
+        IEnumerable<TEntity> GetAllAsync();
         TEntity GetAsync(int id);
-         AttchTEntity(TEntity entity);
+        void AttchTEntity(TEntity entity);
         void Update(TEntity entity);
         void Delete(TEntity entity); 
     }
