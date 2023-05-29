@@ -1,6 +1,9 @@
-﻿namespace DAL.Repositories
+﻿using DAL.Entities;
+using DAL.Interfaces;
+
+namespace DAL.Interfaces
 {
-    internal interface IAccountAdminReposioty
+    public interface IAccountAdminReposioty : IGenericRepository<AccountAdmin>
     {
     }
 }
