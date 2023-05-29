@@ -14,7 +14,7 @@ namespace DAL.Repositories
         public OrderDetailRepository(CoffeeShopDbContext context) : base(context)
         {
         }
-        public override  Task AttchTEntity(OrderDetail entity)
+        public override AttchTEntity(OrderDetail entity)
         {
              entities.FromSqlRaw($"CALL USP_OrderDetail({0},{1},{2})", entity.Order_no, entity.Prod_no, entity.Amount);
             return base.AttchTEntity(entity);

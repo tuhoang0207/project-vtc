@@ -15,9 +15,9 @@ namespace DAL.Repositories
         {
         }
 
-        public async Task<Category?> GetProductByCategory(int id)
+        public   Category? GetProductByCategory(int id)
         {
-           return  await entities
+           return  entities
                 .Include(cate => cate.Products)
                 .Where(cate =>cate.Cate_no == id).FirstOrDefaultAsync();
         }

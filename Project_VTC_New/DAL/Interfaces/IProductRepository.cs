@@ -9,7 +9,7 @@ namespace DAL.Interfaces
 {
     public interface IProductRepository : IGenericRepository<Product>
     {
-        Task<int> BestSellingProduct();
+        int BestSellingProduct();
         
     }
     

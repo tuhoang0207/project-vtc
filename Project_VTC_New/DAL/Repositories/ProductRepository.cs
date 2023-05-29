@@ -16,9 +16,9 @@ namespace DAL.Repositories
         {
         }
 
-        public async Task<int> BestSellingProduct()
+        public int BestSellingProduct()
         {
-            return await context.Database.ExecuteSqlAsync($"Call USP_BestsellingProduct();");
+            return context.Database.ExecuteSqlAsync($"Call USP_BestsellingProduct();");
         }
 
       

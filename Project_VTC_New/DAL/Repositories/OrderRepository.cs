@@ -17,17 +17,17 @@ namespace DAL.Repositories
         }
 
 
-        public  async Task<IEnumerable<Order>> GetUnpaidOrder()
+        public IEnumerable<Order> GetUnpaidOrder()
         {
-            return await entities.Where(order => order.Order_st == 0).ToListAsync();
+            return entities.Where(order => order.Order_st == 0).ToList();
         }
 
-        public  async Task<IEnumerable<Order>> GetHistoryBill(DateTime since, DateTime toDate)
+        public IEnumerable<Order> GetHistoryBill(DateTime since, DateTime toDate)
         {
-            return await entities
+            return entities
                 .Include(order => order.Details)
                 .ThenInclude(detail => detail.Product)
-                .Where(order => order.CheckOut >= since && order.CheckOut <= toDate).ToArrayAsync();
+                .Where(order => order.CheckOut >= since && order.CheckOut <= toDate).ToArray();
         }
     }
 }

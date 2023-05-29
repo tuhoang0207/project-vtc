@@ -18,31 +18,46 @@ namespace DAL.Repositories
             this.context = context;
             entities = this.context.Set<TEntity>();
         }
-        public virtual async Task AttchTEntity(TEntity entity)
+        public virtual void AttchTEntity(TEntity entity)
         {
-            await entities.AddAsync(entity);
+             entities.Add(entity);
            
         }
+
+        //public void AttchTEntity(TEntity entity)
+        //{
+        //    throw new NotImplementedException();
+        //}
 
         public virtual void Delete(TEntity entity)
         {
             throw new NotImplementedException();
         }
 
-        public virtual async Task<IEnumerable<TEntity>> GetAllAsync()
+        public virtual  IEnumerable<TEntity> GetAll()
         {
-            return await entities.ToListAsync();
+            return entities.ToList();
         }
 
-        public virtual async Task<TEntity> GetAsync(int id)
-        {
-            return await entities.FindAsync(id);
-        }
+        //public Task<IEnumerable<TEntity>> GetAllAsync()
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //public Task<TEntity> GetAsync(int id)
+        //{
+        //    throw new NotImplementedException();
+        //}
 
         public virtual void Update (TEntity entity)
         {
              entities.Attach(entity);
              this.context.Entry(entity).State = EntityState.Modified;
         }
+
+        //TEntity IGenericRepository<TEntity>.Get (int id)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

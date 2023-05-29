@@ -17,11 +17,11 @@ namespace BLL.Services
             this.unitOfWork = unitOfwork;
         }
 
-        public async Task<bool> Attach(Employee employee)
+        public bool Attach(Employee employee)
         {
            if(employee != null)
             {
-                await unitOfWork.EmployeeRepository.AttchTEntity(employee);
+                unitOfWork.EmployeeRepository.AttchTEntity(employee);
                 var result = unitOfWork.SaveChanges();
                 if(result > 0)
                     return true;
@@ -30,12 +30,12 @@ namespace BLL.Services
            return false;
         }
 
-        public async Task<Employee> Find(int emp_no)
+        public Employee Find(int emp_no)
         {
-            return await this.unitOfWork.EmployeeRepository.GetAsync(emp_no);
+            return  this.unitOfWork.EmployeeRepository.GetAsync(emp_no);
         }
 
-        public async Task<bool> Update(Employee employee)
+        public bool Update(Employee employee)
         {
             if(employee != null)
             {
