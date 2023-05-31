@@ -32,6 +32,9 @@ namespace UI
                 Console.WriteLine("|--------------------|");
                 Console.WriteLine("|2. History Bill     |");
                 Console.WriteLine("|--------------------|");
+                Console.WriteLine("|0. Exit             |");
+                Console.WriteLine("|--------------------|");
+                Console.Write("Enter choice: ");
                 choose = Convert.ToInt32(Console.ReadLine());
                 switch (choose)
                 {

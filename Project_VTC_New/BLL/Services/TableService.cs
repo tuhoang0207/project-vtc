@@ -17,11 +17,11 @@ namespace BLL.Services
         {
             this.unitOfWork = unitOfWork;
         }
-        public async Task<bool> Attach(Table model)
+        public  bool Attach(Table model)
         {
             if (model !=null)
             {
-                await this.unitOfWork.Tables.AttchTEntity(model);
+                 this.unitOfWork.Tables.AttchTEntity(model);
                 var result = unitOfWork.SaveChanges();
                 if(result > 0)
                     return true;
@@ -29,21 +29,21 @@ namespace BLL.Services
             }
             return false;
         }
-        public async Task<Table> Find(int id)
+        public  Table Find(int id)
         {
-           return await this.unitOfWork.Tables.GetAsync(id);
+           return  this.unitOfWork.Tables.GetAsync(id);
         }
 
-        public async Task<IEnumerable<Table>> GetAll()
+        public  IEnumerable<Table> GetAll()
         {
-            return await this.unitOfWork.Tables.GetAllAsync();
+            return  this.unitOfWork.Tables.GetAllAsync();
         }
-        public Task<bool> Delete(Table model)
+        public bool Delete(Table model)
         {
             throw new NotImplementedException();
         }
 
-        public Task<bool> Update(Table model)
+        public bool Update(Table model)
         {
             throw new NotImplementedException();
         }

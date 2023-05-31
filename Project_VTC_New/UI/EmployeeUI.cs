@@ -4,8 +4,10 @@ using DAL.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
+using MySqlX.XDevAPI.Common;
 
 namespace UI
 {
@@ -17,6 +19,35 @@ namespace UI
         {
             this.accountEmployeeService = accountEmployeeService;
             this.employeeService = employeeService;
+        }
+
+        public void Menu()
+        {
+            int choice = 0;
+            do
+            {
+                Console.WriteLine("1. AttachEmployee");
+                Console.WriteLine("2. UpdateEmployee");
+                Console.WriteLine("3. DeleteEmployee");
+                Console.WriteLine("4. getListEmployee");
+                Console.WriteLine("0. Exit");
+                switch (choice)
+                {
+                    case 0:
+                        break;
+                    case 1:
+                        AttachEmployee();
+                        break;
+                    case 2:
+                        UpdateEmployee();
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        GetListAccountEmployee();
+                        break;
+                }
+            } while (choice != 0);
         }
         public   void AttachEmployee()
         {
@@ -41,6 +72,21 @@ namespace UI
                 return;
             }
             Console.WriteLine("Error");
+        }
+
+        public void UpdateEmployee()
+        {
+            GetListAccountEmployee();
+            Console.Write("Enter ID employee");
+            int emp_no = Convert.ToInt32(Console.ReadLine());
+            var result = accountEmployeeService.Find(emp_no);
+            if (result != null)
+            {
+                Console.WriteLine("Enter pass work");
+                result.PassWord = Console.ReadLine();
+                accountEmployeeService.Update(result);
+                Console.WriteLine("Successfully");
+            }
         }
         public   void GetListAccountEmployee()
         {

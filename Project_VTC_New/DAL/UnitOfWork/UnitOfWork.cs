@@ -10,6 +10,7 @@ namespace DAL.UnitOfWork
 {
     public class UnitOfWork : IUnitOfWork
     {
+        public IAccountAdminReposioty accountAdminReposioty { get; private set; }
         public IEmployeeRepository EmployeeRepository { get; private set; }
         public IAccountEmployeeResository AccountEmployeeResository { get; private set; }
         public ISalaryRepository SalaryRepository { get; private set; }
@@ -26,6 +27,7 @@ namespace DAL.UnitOfWork
         public UnitOfWork()
         {
             this.context = new CoffeeShopDbContext();
+            this.accountAdminReposioty = new AccountAdminRepository(context);
             this.EmployeeRepository = new EmployeeRepository(context);
             this.AccountEmployeeResository = new AccountEmployeeRepository(context);
             this.SalaryRepository = new SalaryRepository(context);
@@ -56,15 +58,6 @@ namespace DAL.UnitOfWork
             {
                 context.Dispose();
             }
-        }
-
-        public void RollBack()
-        {
-            throw new NotImplementedException();
-        }
-        public void Commit()
-        {
-            throw new NotImplementedException();
         }
     }
 }

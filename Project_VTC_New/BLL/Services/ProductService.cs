@@ -16,11 +16,11 @@ namespace BLL.Services
         {
             this.unitOfWork = unitOfWork;
         }
-        public async Task<bool> Attach(Product model)
+        public  bool Attach(Product model)
         {
             if (model != null)
             {
-                await unitOfWork.Products.AttchTEntity(model);
+                 unitOfWork.Products.AttchTEntity(model);
                 var result = unitOfWork.SaveChanges();
                 if (result > 0) return true;
                 return false;
@@ -28,7 +28,7 @@ namespace BLL.Services
             return false;
         }
 
-        public async Task<bool> Update(Product model)
+        public  bool Update(Product model)
         {
             if (model != null)
             {
@@ -39,23 +39,23 @@ namespace BLL.Services
             return false;
         }
 
-        public Task<bool> Delete(Product model)
+        public bool Delete(Product model)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<Product>> GetAll()
+        public  IEnumerable<Product> GetAll()
         {
-            return await unitOfWork.Products.GetAllAsync();
+            return  unitOfWork.Products.GetAllAsync();
         }
 
-        public async Task<IEnumerable<Product>> GetListProductByName(string productName)
+        public  IEnumerable<Product> GetListProductByName(string productName)
         {
-            var result = await unitOfWork.Products.GetAllAsync();
+            var result =  unitOfWork.Products.GetAllAsync();
             return result.Where(x =>x.Prod_name.Contains(productName));
         }
 
-        public Task<Product> Find(int id)
+        public Product Find(int id)
         {
             throw new NotImplementedException();
         }

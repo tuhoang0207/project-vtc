@@ -9,6 +9,6 @@ namespace BLL.Interfaces
 {
     public interface IProductService : IService<Product>
     {
-        Task<IEnumerable<Product>> GetListProductByName(string productName);
+        IEnumerable<Product> GetListProductByName(string productName);
     }
 }

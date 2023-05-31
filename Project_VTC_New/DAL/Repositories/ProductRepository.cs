@@ -18,7 +18,7 @@ namespace DAL.Repositories
 
         public int BestSellingProduct()
         {
-            return context.Database.ExecuteSqlAsync($"Call USP_BestsellingProduct();");
+            return context.Database.ExecuteSql($"Call USP_BestsellingProduct();");
         }
 
       

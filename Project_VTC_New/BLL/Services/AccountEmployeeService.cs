@@ -14,15 +14,16 @@ namespace BLL.Services
     public class AccountEmployeeService : IAccountEmployeeService
     {
         public IUnitOfWork unitOfWork;
+        private int emp_no;
         public AccountEmployeeService(IUnitOfWork unitOfWork)
         {
             this.unitOfWork = unitOfWork;
         }
-        public async Task<bool> Attach(AccountEmployee model)
+        public  bool Attach(AccountEmployee model)
         {
             if(model != null)
             {
-                await unitOfWork.AccountEmployeeResository.AttchTEntity(model);
+                 unitOfWork.AccountEmployeeResository.AttchTEntity(model);
                 var result = unitOfWork.SaveChanges();
                 if (result > 0)
                     return true;
@@ -31,22 +32,42 @@ namespace BLL.Services
             return false;
         }
 
-        public Task<bool> Delete(AccountEmployee model)
+        public bool Delete(AccountEmployee model)
         {
             throw new NotImplementedException();
         }
 
-        public Task<AccountEmployee> Find(int id)
+        public AccountEmployee Find(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<AccountEmployee>> GetAll()
+        public bool Islogin(string userName, string passWord)
+        {
+            
+            if (userName != null  && passWord != null)
+            {
+                emp_no =  unitOfWork.AccountEmployeeResository
+                    .GetAllAsync()
+                    .Where(account => account.UserName == userName && account.PassWord == passWord).FirstOrDefault()
+                    .Emp_no;
+                if (this.emp_no > 0) return true;
+                return false;
+            }
+            return false;
+        }
+
+        public int GetIdForEmp()
+        {
+            return this.emp_no;
+        }
+
+        public IEnumerable<AccountEmployee> GetAll()
         {
            return unitOfWork.AccountEmployeeResository.GetAllAsync();
         }
 
-        public async Task<bool> Update(AccountEmployee model)
+        public  bool Update(AccountEmployee model)
         {
            if(model != null)
             {

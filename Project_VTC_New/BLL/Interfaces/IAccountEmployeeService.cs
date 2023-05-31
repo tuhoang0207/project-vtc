@@ -9,5 +9,6 @@ namespace BLL.Interfaces
 {
     public interface IAccountEmployeeService : IService<AccountEmployee>
     {
+        bool Islogin(string userName, string passWord);
     }
 }

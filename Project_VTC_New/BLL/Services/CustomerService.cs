@@ -16,22 +16,22 @@ namespace BLL.Services
         {
             this.unitOfWork = unitOfWork;
         }
-        public async Task<bool> Attach(Customer customer)
+        public  bool Attach(Customer customer)
         {
             if(customer != null)
             {
-                await unitOfWork.Customers.AttchTEntity(customer);
+                unitOfWork.Customers.AttchTEntity(customer);
                 var result = unitOfWork.SaveChanges();
                 if(result > 0) return true;
                 return false;
             }
             return false;
         }
-        public async Task<bool> Update(Customer customer)
+        public  bool Update(Customer customer)
         {
             if(customer != null)
             {
-                var resultCustomer = await unitOfWork.Customers.GetAsync(customer.Cus_no);
+                var resultCustomer =  unitOfWork.Customers.GetAsync(customer.Cus_no);
                 if(resultCustomer != null)
                 {
                       unitOfWork.Customers.Update(customer);
@@ -42,11 +42,11 @@ namespace BLL.Services
             }
             return false;
         }
-        public async Task<bool> Delete(Customer customer)
+        public  bool Delete(Customer customer)
         {
             if(customer != null)
             {
-                var resultCustomer = await unitOfWork.Customers.GetAsync(customer.Cus_no);
+                var resultCustomer =  unitOfWork.Customers.GetAsync(customer.Cus_no);
                 if (resultCustomer != null)
                 {
                      unitOfWork.Customers.Delete(customer);
@@ -57,13 +57,13 @@ namespace BLL.Services
             }
             return false;
         }
-        public async Task<Customer> Find(int cus_no)
+        public  Customer Find(int cus_no)
         {
-            return await unitOfWork.Customers.GetAsync(cus_no);
+            return  unitOfWork.Customers.GetAsync(cus_no);
         }
-        public async Task<IEnumerable<Customer>> GetAll()
+        public  IEnumerable<Customer> GetAll()
         {
-            return await unitOfWork.Customers.GetAllAsync();
+            return  unitOfWork.Customers.GetAllAsync();
         }
     }
 }

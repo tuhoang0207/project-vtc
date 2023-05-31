@@ -15,11 +15,11 @@ namespace DAL.Repositories
         {
         }
 
-        public   Category? GetProductByCategory(int id)
+        public   Category GetProductByCategory(int id)
         {
            return  entities
                 .Include(cate => cate.Products)
-                .Where(cate =>cate.Cate_no == id).FirstOrDefaultAsync();
+                .Where(cate =>cate.Cate_no == id).FirstOrDefault();
         }
     }
 }

@@ -8,10 +8,10 @@ namespace BLL.Interfaces
 {
     public interface IService<T > where T : class
     {
-        Task<bool> Attach(T model);
-        Task<bool> Update(T model);
-        Task<bool> Delete(T model);
-        Task<IEnumerable<T>> GetAll();
-        Task<T> Find(int id);
+        bool Attach(T model);
+        bool Update(T model);
+        bool Delete(T model);
+        IEnumerable<T> GetAll();
+        T Find(int id);
     }
 }

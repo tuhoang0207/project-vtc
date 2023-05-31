@@ -9,6 +9,6 @@ namespace BLL.Interfaces
 {
     public interface ICategoryService :IService<Category>
     {
-        Task<Category> GetProductByCategory(int categoryId);
+        Category GetProductByCategory(int categoryId);
     }
 }

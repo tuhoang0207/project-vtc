@@ -17,7 +17,7 @@ namespace UI
     {
         private ICategoryService categoryService;
         private IProductService productService;
-        public ProductUI(IUnitOfWork unitOfWork, ICategoryService categoryService, IProductService productService)
+        public ProductUI( ICategoryService categoryService, IProductService productService)
         {
             this.categoryService = categoryService;
             this.productService = productService;
@@ -78,17 +78,38 @@ namespace UI
                         }
                         case 1:
                         {
-                            AttachProduct();
+                            if (AccountManager.Instance.AccountAdmin())
+                            {
+                                AttachProduct();
+                            }
+                            else
+                            {
+                                Console.WriteLine("Only admin can use this fucntion");
+                            }
                             break;
                         }
                     case 2:
                         {
-                            UpdateProduct();
+                            if (AccountManager.Instance.AccountAdmin())
+                            {
+                                UpdateProduct();
+                            }
+                            else
+                            {
+                                Console.WriteLine("Only admin can use this function");
+                            }
                             break;
                         }
                     case 3:
                         {
-                            
+                            if (AccountManager.Instance.AccountAdmin())
+                            {
+                                
+                            }
+                            else
+                            {
+                                Console.WriteLine("Only admin can use this fucntion");
+                            }
                             break;
                         }
                     case 4:
